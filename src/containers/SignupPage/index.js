@@ -26,18 +26,24 @@ const Button = styled.button`
   margin: 10px;
 `
 
-class LoginPage extends Component {
+class SignupPage extends Component {
   render() {
     return (
       <Root>
         <MainContainer>
-          <label>E-mail</label>
+
+          <label>Nome de usuário:</label>
           <InputUser>
           </InputUser>
-          <label>Senha</label>
+
+          <label>E-mail:</label>
+          <InputUser>
+          </InputUser>
+
+          <label>Senha:</label>
           <InputPassword>
           </InputPassword>
-          <Button>Entrar</Button>
+          
           <Button>Cadastrar</Button>
         </MainContainer>
       </Root>
@@ -45,4 +51,4 @@ class LoginPage extends Component {
   }
 }
 
-export default LoginPage;
+export default SignupPage;
