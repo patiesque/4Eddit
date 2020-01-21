@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { getPosts } from '../action/index'
 import { getPostsDetail } from '../action/index'
-import { routes } from '../containers/Router'
-import { push } from "connected-react-router";
 
 const Card = styled.section`
     width: 100%;
@@ -35,24 +32,15 @@ const BottomBar = styled.span`
 const Votes = styled.div`
 
 `
-
 const Comments = styled.span``
 
-class PostCard extends Component {
+class PostCardDetail extends Component {
 
 
-    componentDidMount() {
-        this.props.getPosts()
-    }
 
-    handlePostDetail = (id) => {
-        this.props.getPostsDetail(id)
-        this.props.goToPostDetail()
-    }
 
     render() {
-      
-
+        console.log(this.props.selectIdPost)
         return (
             <div>
                 {this.props.allPosts.map((post) =>
@@ -65,11 +53,8 @@ class PostCard extends Component {
                             <span>{post.votesCount}</span>
                             <span>"Menos"</span> {/* inserir imagem de voto negativo aqui */}
                         </Votes>
-                        <Comments> {post.commentsNumber} </Comments>
-                        <button value={post.id} name="id"
+                        <Comments> {post.commentsNumber} Comentários</Comments>
 
-                        onClick={ () => this.handlePostDetail(post.id)}
-                        >Comentários</button>
                     </BottomBar>
                 </Card>
                 
@@ -82,15 +67,12 @@ class PostCard extends Component {
 
 const mapStateToProps = state => ({
     allPosts: state.posts.allPosts,
+    selectIdPost: state.posts.selectIdPost
+
 })
 
 const mapDispatchToProps = dispatch => ({
-    getPosts: () => dispatch(getPosts()),
-    getPostsDetail: (id) => dispatch(getPostsDetail(id)),
-    goToPostDetail: () => dispatch(push(routes.posts))
-
-
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostCard);
+export default connect(mapStateToProps, mapDispatchToProps)(PostCardDetail);
