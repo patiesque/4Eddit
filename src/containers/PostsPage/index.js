@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import PostCard from "../../components/PostCard";
 import CreateNewComment from "../../components/CreateNewComment";
 import CommentCard from "../../components/CommentCard"
+import PostCardDetail from "../../components/PostCardDetail";
 
 const Root = styled.div`
   width: 100%;
@@ -26,7 +26,7 @@ class PostsPage extends Component {
         return (
             <Root>
                 <MainContainer>
-                    <PostCard />    
+                    <PostCardDetail />
                     <CreateNewComment />
                     <CommentCard />
                 </MainContainer>

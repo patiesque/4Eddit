@@ -6,25 +6,24 @@ import SignupPage from "../SignupPage";
 import FeedPage from "../FeedPage";
 import PostsPage from "../PostsPage";
 
+export const routes = {
+  root: "/",
+  signup: "/signup",
+  feed: "/feed",
+  posts: "/posts",
 
-
-
-const routes = {
-  root: "/"
   // Outras rotas aqui
-  // signupPage: "/signup"
-  // feedPage: "/feed"
-  // postsPage: "/posts"
+
 };
 
 function Router(props) {
   return (
     <ConnectedRouter history={props.history}>
       <Switch>
-        <Route path={routes.root} component={LoginPage} />
-        {/* <Route path={routes.root} component={SignupPage} /> */}
-        {/* <Route path={routes.root} component={FeedPage} /> */}
-        {/* <Route path={routes.root} component={PostsPage} /> */}
+        <Route path={routes.root} component={LoginPage} exact />
+        <Route path={routes.signup} component={SignupPage} exact />
+        <Route path={routes.feed} component={FeedPage} exact />
+        <Route path={routes.posts} component={PostsPage} exact /> 
       </Switch>
     </ConnectedRouter>
   );
