@@ -5,9 +5,21 @@ import { getPosts } from '../action/index'
 import { getPostsDetailAction } from '../action/index'
 import { routes } from '../containers/Router'
 import { push } from "connected-react-router";
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+
+const Root = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 15px 0;
+  align-items: flex-start;
+`
 
 const Card = styled.section`
     width: 100%;
+    max-height: 250px;
     display: flex;
     flex-direction: column;
     border: solid black 1px;
@@ -30,16 +42,27 @@ const BottomBar = styled.span`
     display: flex;
     border: solid black 1px;
     justify-content: space-between;
+    align-items: center;
 `
 
 const Votes = styled.div`
-
+    display: flex;
+    padding: 3px;
+    align-items: center;   
 `
 
-const Comments = styled.span``
+const Comments = styled.div`
+    padding: 5px;
+
+
+    &:hover{
+	    background-color: #d3d3d3;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+`
 
 class PostCard extends Component {
-
 
     componentDidMount() {
         this.props.getPosts()
@@ -51,34 +74,35 @@ class PostCard extends Component {
     }
 
     render() {
-      
+
 
         return (
-            <div>
+            <Root>
                 {this.props.allPosts.map((post) =>
-                <Card>
-                    <UserName>{post.username}</UserName>
-                    <PostContent>{post.text}</PostContent>
-                    <BottomBar>
-                        <Votes>
-                            <span>"Mais"</span> {/* inserir imagem de voto positivo aqui */}
-                            <span>{post.votesCount}</span>
-                            <span>"Menos"</span> {/* inserir imagem de voto negativo aqui */}
-                        </Votes>
-                        <Comments> {post.commentsNumber} </Comments>
-                        <button value={post.id} name="id"
+                    <Card>
+                        <UserName>{post.username}</UserName>
+                        <PostContent>{post.text}</PostContent>
+                        <BottomBar>
+                            <Votes>
+                                <span><ArrowUpwardIcon /></span>
+                                <span>{post.votesCount}</span>
+                                <span><ArrowDownwardIcon /></span>
+                            </Votes>
 
-                        onClick={ () => this.handlePostDetail(post.id)}
-                        >Comentários</button>
-                    </BottomBar>
-                </Card>
-                
+                            <Comments value={post.id} name="id"
+                                onClick={() => this.handlePostDetail(post.id)}
+                            >
+                                {post.commentsNumber} Comentários
+                            </Comments>
+                        </BottomBar>
+                    </Card>
+
                 )}
-            </div>
+            </Root>
         );
     }
 }
- 
+
 
 const mapStateToProps = state => ({
     allPosts: state.posts.allPosts,

@@ -7,7 +7,6 @@ const NewPostArea = styled.section`
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
-    position: absolute
 `
 
 const WriteNewPost = styled.textarea``

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 
 const Comment = styled.section`
     width: 100%;
@@ -27,7 +29,9 @@ const BottomBar = styled.span`
 `
 
 const Votes = styled.div`
-
+    display: flex;
+    padding: 3px;
+    align-items: center;   
 `
 
 const Comments = styled.span``
@@ -35,7 +39,7 @@ const Comments = styled.span``
 class CommentCard extends Component {
     render() {
 
-        const {username, text} = this.props.selectPost
+        const { username, text, votesCount } = this.props.selectPost
 
         return (
             <Comment>
@@ -44,9 +48,9 @@ class CommentCard extends Component {
 
                 <BottomBar>
                     <Votes>
-                        <span>"Mais"</span> {/* inserir imagem de voto positivo aqui */}
-                        <span>5 </span>
-                        <span>"Menos"</span> {/* inserir imagem de voto negativo aqui */}
+                        <span><ArrowUpwardIcon /></span>
+                        <span>{votesCount}</span>
+                        <span><ArrowDownwardIcon /></span>
                     </Votes>
                 </BottomBar>
             </Comment>

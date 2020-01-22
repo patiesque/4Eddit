@@ -2,9 +2,21 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { getPostsDetail } from '../action/index'
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+
+const Root = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 15px 0;
+  align-items: flex-start;
+`
 
 const Card = styled.section`
     width: 100%;
+    max-height: 250px;
     display: flex;
     flex-direction: column;
     border: solid black 1px;
@@ -30,7 +42,9 @@ const BottomBar = styled.span`
 `
 
 const Votes = styled.div`
-
+    display: flex;
+    padding: 3px;
+    align-items: center; 
 `
 const Comments = styled.span``
 
@@ -48,7 +62,7 @@ class PostCardDetail extends Component {
         console.log(this.props.selectPost)
 
         return (
-            <div>
+            <Root>
 
                 {this.props.selectPost.comments && this.props.selectPost.comments.map((comment) =>
                     <Card>
@@ -56,15 +70,15 @@ class PostCardDetail extends Component {
                         <PostContent>{comment.text}</PostContent>
                         <BottomBar>
                             <Votes>
-                                <span>"Mais"</span> {/* inserir imagem de voto positivo aqui */}
+                                <span><ArrowUpwardIcon /></span> {/* inserir imagem de voto positivo aqui */}
                                 <span>{comment.votesCount}</span>
-                                <span>"Menos"</span> {/* inserir imagem de voto negativo aqui */}
+                                <span><ArrowDownwardIcon /></span> {/* inserir imagem de voto negativo aqui */}
                             </Votes>
                             <Comments>{comment.commentsNumber}</Comments>
                         </BottomBar>
                     </Card>
-                )}                
-            </div>
+                )}
+            </Root>
         )
     }
 
