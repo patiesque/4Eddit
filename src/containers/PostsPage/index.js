@@ -26,9 +26,10 @@ class PostsPage extends Component {
         return (
             <Root>
                 <MainContainer>
-                    <PostCardDetail />
                     <CreateNewComment />
                     <CommentCard />
+                    <PostCardDetail />
+
                 </MainContainer>
             </Root>
         );

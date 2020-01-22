@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { getPosts } from '../action/index'
-import { getPostsDetail } from '../action/index'
+import { getPostsDetailAction } from '../action/index'
 import { routes } from '../containers/Router'
 import { push } from "connected-react-router";
 
@@ -78,7 +78,7 @@ class PostCard extends Component {
         );
     }
 }
-
+ 
 
 const mapStateToProps = state => ({
     allPosts: state.posts.allPosts,
@@ -86,7 +86,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     getPosts: () => dispatch(getPosts()),
-    getPostsDetail: (id) => dispatch(getPostsDetail(id)),
+    getPostsDetail: (id) => dispatch(getPostsDetailAction(id)),
     goToPostDetail: () => dispatch(push(routes.posts))
 
 
