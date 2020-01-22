@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
 
 const Comment = styled.section`
     width: 100%;
@@ -33,10 +34,13 @@ const Comments = styled.span``
 
 class CommentCard extends Component {
     render() {
+
+        const {username, text} = this.props.selectPost
+
         return (
             <Comment>
-                <UserName>@joao.da.silva</UserName>
-                <CommentContent>Comentário do joao</CommentContent>
+                <UserName>{username}</UserName>
+                <CommentContent>{text}</CommentContent>
 
                 <BottomBar>
                     <Votes>
@@ -50,4 +54,9 @@ class CommentCard extends Component {
     }
 }
 
-export default CommentCard;
+const mapStateToProps = state => ({
+    selectPost: state.posts.selectPost
+
+})
+
+export default connect(mapStateToProps)(CommentCard);

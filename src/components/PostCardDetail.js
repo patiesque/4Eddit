@@ -36,9 +36,9 @@ const Comments = styled.span``
 
 class PostCardDetail extends Component {
 
- 
 
-    componentDidMount(){
+
+    componentDidMount() {
         this.props.getPostsDetail(this.props.selectIdPost)
     }
 
@@ -49,13 +49,25 @@ class PostCardDetail extends Component {
 
         return (
             <div>
-             <h1>{this.props.selectPost.username}</h1>
-             {this.props.selectPost.comments.map((post) =>
-                <h1> {post.username} </h1>
-             )}
+
+                {this.props.selectPost.comments && this.props.selectPost.comments.map((comment) =>
+                    <Card>
+                        <UserName>{comment.username}</UserName>
+                        <PostContent>{comment.text}</PostContent>
+                        <BottomBar>
+                            <Votes>
+                                <span>"Mais"</span> {/* inserir imagem de voto positivo aqui */}
+                                <span>{comment.votesCount}</span>
+                                <span>"Menos"</span> {/* inserir imagem de voto negativo aqui */}
+                            </Votes>
+                            <Comments>{comment.commentsNumber}</Comments>
+                        </BottomBar>
+                    </Card>
+                )}                
             </div>
-        )}
-    
+        )
+    }
+
 }
 
 
