@@ -36,42 +36,39 @@ const Comments = styled.span``
 
 class PostCardDetail extends Component {
 
+ 
 
+    componentDidMount(){
+        this.props.getPostsDetail(this.props.selectIdPost)
+    }
 
 
     render() {
         console.log(this.props.selectIdPost)
+        console.log(this.props.selectPost)
+
         return (
             <div>
-                {this.props.allPosts.map((post) =>
-                <Card>
-                    <UserName>{post.username}</UserName>
-                    <PostContent>{post.text}</PostContent>
-                    <BottomBar>
-                        <Votes>
-                            <span>"Mais"</span> {/* inserir imagem de voto positivo aqui */}
-                            <span>{post.votesCount}</span>
-                            <span>"Menos"</span> {/* inserir imagem de voto negativo aqui */}
-                        </Votes>
-                        <Comments> {post.commentsNumber} Comentários</Comments>
-
-                    </BottomBar>
-                </Card>
-                
-                )}
+             <h1>{this.props.selectPost.username}</h1>
+             {this.props.selectPost.comments.map((post) =>
+                <h1> {post.username} </h1>
+             )}
             </div>
-        );
-    }
+        )}
+    
 }
 
 
 const mapStateToProps = state => ({
     allPosts: state.posts.allPosts,
-    selectIdPost: state.posts.selectIdPost
+    selectIdPost: state.posts.selectIdPost,
+    selectPost: state.posts.selectPost
 
 })
 
 const mapDispatchToProps = dispatch => ({
+    getPostsDetail: (id) => dispatch(getPostsDetail(id)),
+
 });
 
 

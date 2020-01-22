@@ -14,11 +14,20 @@ const getPostsAction = (posts) => {
   }
 };
 
-const getPostsDetailAction = (id) => {
+export const getPostsDetailAction = (id) => {
   return {
     type: "GET_POSTS_DETAIL",
     payload: {
       id,
+    }
+  };
+};
+
+export const setCommentsAction = (post) => {
+  return {
+    type: "SET_COMMENTS",
+    payload: {
+      post,
     }
   };
 };
@@ -36,10 +45,11 @@ export const getPosts = () => async (dispatch) => {
 
 //Get Post Detail
 export const getPostsDetail = (id) => async (dispatch) => {
+  console.log(id)
   const headers = { headers: { auth: window.localStorage.getItem("token") } }
   const response = await axios.get(`${baseURL}posts/${id}`, headers)
-
-  dispatch(getPostsDetailAction(response.data.id))
+  console.log(response.data.post)
+  dispatch(setCommentsAction(response.data.post))
 
 }
 
