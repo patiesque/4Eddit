@@ -29,33 +29,34 @@ const Button = styled.button`
 `
 
 class LoginPage extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state ={
-      email:"",
-      password:"",
+    this.state = {
+      email: "",
+      password: "",
 
     }
   }
 
   handleChange = event => {
-    this.setState({[event.target.name]: event.target.value
+    this.setState({
+      [event.target.name]: event.target.value
     })
-  } 
+  }
 
-handleSubmit = (event) => {
-  event.preventDefault();
-  const {email, password} = this.state
-  this.props.login(email, password)
-  
-}
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const { email, password } = this.state
+    this.props.login(email, password)
+
+  }
 
   render() {
     return (
       <Root>
         <MainContainer onSubmit={this.handleSubmit}>
           <label htmlFor="inputEmail">E-mail</label>
-          <Input type="email" name="email" value={this.state.email} onChange={this.handleChange} id="inputEmail"></Input>  
+          <Input type="email" name="email" value={this.state.email} onChange={this.handleChange} id="inputEmail"></Input>
           <label htmlFor="inputPassword">Senha</label>
           <Input type="password" name="password" value={this.state.password} onChange={this.handleChange} htmlFor="inputPassword"></Input>
           <Button type="submit" >Entrar</Button>
@@ -74,4 +75,4 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-export default connect (null, mapDispatchToProps)(LoginPage);
+export default connect(null, mapDispatchToProps)(LoginPage);

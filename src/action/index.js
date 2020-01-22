@@ -45,22 +45,11 @@ export const getPosts = () => async (dispatch) => {
 
 //Get Post Detail
 export const getPostsDetail = (id) => async (dispatch) => {
-  console.log(id)
   const headers = { headers: { auth: window.localStorage.getItem("token") } }
   const response = await axios.get(`${baseURL}posts/${id}`, headers)
-  console.log(response.data.post)
   dispatch(setCommentsAction(response.data.post))
 
 }
-
-
-
-
-
-
-
-
-
 
 //Create Posts
 export const createPost = (text, title) => async (dispatch) => {
@@ -70,19 +59,15 @@ export const createPost = (text, title) => async (dispatch) => {
   }
   const headers = { headers: { auth: window.localStorage.getItem("token") } }
 
-
   try {
     await axios.post(`${baseURL}posts`, createPostInformation, headers)
   } catch{
-    window.alert("Erro no login")
+    window.alert("Erro criação")
   }
-
-  dispatch(push(routes.feed))
-
 }
 
 //Create Comment
-export const createComment = (text, postId) => async (dispatch) => {
+export const createComment = (text, id) => async (dispatch) => {
   const createCommentInformation = {
     text
   }
@@ -90,15 +75,24 @@ export const createComment = (text, postId) => async (dispatch) => {
 
 
   try {
-  await axios.post(`${baseURL}posts/${postId}/comment`, createCommentInformation, headers);
+  await axios.post(`${baseURL}posts/${id}/comment`, createCommentInformation, headers);
 
   } catch{
-    window.alert("Erro no login")
+    window.alert("Erro criação")
   }
 //atualizar o post
-  dispatch(push(routes.feed))
+  dispatch(push(routes.posts))
 
 }
+
+
+
+
+
+
+
+
+
 
 //Vote
 export const vote = (postId) => async (dispatch) => {
