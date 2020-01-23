@@ -5,6 +5,8 @@ import { getPosts } from '../action/index'
 import { getPostsDetailAction } from '../action/index'
 import { routes } from '../containers/Router'
 import { push } from "connected-react-router";
+// import Card from '@material-ui/core/Card';
+// import { makeStyles } from '@material-ui/core/styles';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 
@@ -26,21 +28,25 @@ const Card = styled.section`
     margin-bottom: 15px;
 `
 
+
+
 const UserName = styled.span`
     text-align: center;
-    border: solid black 1px;
+`
+
+const PostTitle = styled.h3`
+    text-align: center;
+    margin: 0;
 `
 
 const PostContent = styled.div`
     width: 100%;
-    border: solid black 1px;
     padding: 10px;
 `
 
 const BottomBar = styled.span`
     width: 100%;
     display: flex;
-    border: solid black 1px;
     justify-content: space-between;
     align-items: center;
 `
@@ -62,7 +68,17 @@ const Comments = styled.div`
     }
 `
 
+// const useStyles = makeStyles({
+//     card: {
+//         minWidth: 275,
+//     },
+// });
+
+// const classes = useStyles();
+
 class PostCard extends Component {
+
+    
 
     componentDidMount() {
         this.props.getPosts()
@@ -73,14 +89,16 @@ class PostCard extends Component {
         this.props.goToPostDetail()
     }
 
+    
+
     render() {
-
-
+        
         return (
             <Root>
                 {this.props.allPosts.map((post) =>
-                    <Card>
+                    <Card /* className={classes.card} */>
                         <UserName>{post.username}</UserName>
+                        <PostTitle>{post.title}</PostTitle>
                         <PostContent>{post.text}</PostContent>
                         <BottomBar>
                             <Votes>
