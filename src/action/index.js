@@ -32,8 +32,6 @@ export const setCommentsAction = (post) => {
   };
 };
 
-
-
 //Get Posts
 export const getPosts = () => async (dispatch) => {
   const headers = { headers: { auth: window.localStorage.getItem("token") } }
@@ -61,6 +59,8 @@ export const createPost = (text, title) => async (dispatch) => {
 
   try {
     await axios.post(`${baseURL}posts`, createPostInformation, headers)
+    dispatch(getPosts())
+
   } catch{
     window.alert("Erro criação")
   }
@@ -73,15 +73,13 @@ export const createComment = (text, id) => async (dispatch) => {
   }
   const headers = { headers: { auth: window.localStorage.getItem("token") } }
 
-
   try {
   await axios.post(`${baseURL}posts/${id}/comment`, createCommentInformation, headers);
+  dispatch(getPostsDetail(id))
 
   } catch{
     window.alert("Erro criação")
   }
-//atualizar o post
-  dispatch(push(routes.posts))
 
 }
 
@@ -100,6 +98,13 @@ export const vote = (postId) => async (dispatch) => {
 
   await axios.put(`${baseURL}posts/${postId}/vote`, headers)
 }
+
+
+
+
+
+
+
 
 //Vote Comment
 export const voteComment = (postId, commentId) => async (dispatch) => {

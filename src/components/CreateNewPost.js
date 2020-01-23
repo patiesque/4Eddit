@@ -34,6 +34,7 @@ class CreateNewPost extends Component {
         event.preventDefault();
         const { text, title } = this.state
         this.props.createPost(text, title)
+        this.setState({text: "", title: ""})
 
     }
     render() {

@@ -87,6 +87,7 @@ class PostCard extends Component {
     handlePostDetail = (id) => {
         this.props.getPostsDetail(id)
         this.props.goToPostDetail()
+        
     }
 
     

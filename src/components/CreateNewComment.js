@@ -40,8 +40,7 @@ class CreateNewComment extends Component {
         event.preventDefault();
         const { text } = this.state
         this.props.createComment(text, this.props.selectIdPost)
-        this.props.goToPost()
-
+        this.setState({text:""})
     }
 
         render() {
@@ -63,7 +62,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     createComment: (text, id) => dispatch(createComment(text, id)),
-    goToPost: () => dispatch(push(routes.posts)),
 
 });
 
