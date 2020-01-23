@@ -58,9 +58,6 @@ class PostCardDetail extends Component {
 
 
     render() {
-        console.log(this.props.selectIdPost)
-        console.log(this.props.selectPost)
-
         return (
             <Root>
 

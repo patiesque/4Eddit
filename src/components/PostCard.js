@@ -9,6 +9,7 @@ import { push } from "connected-react-router";
 // import { makeStyles } from '@material-ui/core/styles';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import { vote } from '../action/index'
 
 const Root = styled.div`
   width: 100%;
@@ -90,7 +91,19 @@ class PostCard extends Component {
         
     }
 
-    
+    handleVotePost = (post, direction) => {
+        if(post.userVoteDirection === 0) {
+            // Se a pessoa nunca interagiu com o post
+            this.props.votePost(post.id, direction)
+        } else if(post.userVoteDirection === 1 && direction === 1){
+            // Se a pessoa curtiu, mas já estava curtido
+            this.props.votePost(post.id, 0)
+        } else if (post.userVoteDirection === -1 && direction === -1){
+            // Se a pessoa descurtiu, mas já estava descurtido
+            this.props.votePost(post.id, 0)
+        }
+
+    }
 
     render() {
         
@@ -103,9 +116,9 @@ class PostCard extends Component {
                         <PostContent>{post.text}</PostContent>
                         <BottomBar>
                             <Votes>
-                                <span><ArrowUpwardIcon /></span>
+                                <span ><ArrowUpwardIcon color={post.userVoteDirection !== 1 ? "primary" : "secondary" } onClick = { () => this.handleVotePost(post,1)}/></span>
                                 <span>{post.votesCount}</span>
-                                <span><ArrowDownwardIcon /></span>
+                                <span ><ArrowDownwardIcon color={post.userVoteDirection !== -1 ? "primary" : "secondary" }  onClick = { () => this.handleVotePost(post,-1) } /></span>
                             </Votes>
 
                             <Comments value={post.id} name="id"
@@ -125,14 +138,14 @@ class PostCard extends Component {
 
 const mapStateToProps = state => ({
     allPosts: state.posts.allPosts,
+    selectIdPost: state.posts.selectIdPost,
 })
 
 const mapDispatchToProps = dispatch => ({
     getPosts: () => dispatch(getPosts()),
     getPostsDetail: (id) => dispatch(getPostsDetailAction(id)),
-    goToPostDetail: () => dispatch(push(routes.posts))
-
-
+    goToPostDetail: () => dispatch(push(routes.posts)),
+    votePost: (id,direction) => dispatch(vote(id, direction))
 });
 
 

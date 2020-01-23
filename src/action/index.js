@@ -83,24 +83,17 @@ export const createComment = (text, id) => async (dispatch) => {
 
 }
 
-
-
-
-
-
-
-
-
-
 //Vote
-export const vote = (postId) => async (dispatch) => {
+export const vote = (id, direction) => async (dispatch) => {
   const headers = { headers: { auth: window.localStorage.getItem("token") } }
+  const voteInformation = {
+    "direction": direction
+  }
 
-  await axios.put(`${baseURL}posts/${postId}/vote`, headers)
+  await axios.put(`${baseURL}posts/${id}/vote`, voteInformation, headers)
+  dispatch(getPosts())
+
 }
-
-
-
 
 
 
