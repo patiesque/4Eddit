@@ -4,6 +4,19 @@ import { connect } from "react-redux";
 import { login } from "../../action/login"
 import { routes } from "../Router";
 import { push } from "connected-react-router";
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+import { MuiThemeProvider, CssBaseline } from "@material-ui/core";
 
 const Root = styled.div`
   width: 100vw;
@@ -22,10 +35,11 @@ const MainContainer = styled.form`
   align-items: center;
 `
 
-const Input = styled.input``
-
-const Button = styled.button`
-  margin: 10px;
+const Logo = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `
 
 class LoginPage extends Component {
@@ -34,7 +48,6 @@ class LoginPage extends Component {
     this.state = {
       email: "",
       password: "",
-
     }
   }
 
@@ -48,21 +61,74 @@ class LoginPage extends Component {
     event.preventDefault();
     const { email, password } = this.state
     this.props.login(email, password)
-
   }
 
   render() {
+
     return (
       <Root>
-        <MainContainer onSubmit={this.handleSubmit}>
-          <label htmlFor="inputEmail">E-mail</label>
-          <Input type="email" name="email" value={this.state.email} onChange={this.handleChange} id="inputEmail"></Input>
-          <label htmlFor="inputPassword">Senha</label>
-          <Input type="password" name="password" value={this.state.password} onChange={this.handleChange} htmlFor="inputPassword"></Input>
-          <Button type="submit" >Entrar</Button>
-          <Button onClick={this.props.goToSignup}>Cadastrar</Button>
-        </MainContainer>
-      </Root>
+        <Container component="main" maxWidth="xs">
+          <CssBaseline />
+          <div>
+            <Logo>
+              <Avatar >
+                <LockOutlinedIcon />
+              </Avatar>
+              <Typography>
+                Sign in
+            </Typography>
+            </Logo>
+            <form onSubmit={this.handleSubmit}>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                autoComplete="email"
+                autoFocus
+                component="h1"
+                type="email"
+                name="email"
+                value={this.state.email}
+                onChange={this.handleChange}
+                id="inputEmail"
+
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                autoComplete="current-password"
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+              >
+                Login
+            </Button>
+              <Grid container>
+                <Grid item xs>
+                </Grid>
+                <Grid item>
+                  <Link href="#" variant="body2" onClick={this.props.goToSignup}>
+                    {"Don't have an account? Sign Up"}
+                  </Link>
+                </Grid>
+              </Grid>
+            </form>
+          </div>
+        </Container>
+      </Root >
     );
   }
 }
@@ -70,8 +136,6 @@ class LoginPage extends Component {
 const mapDispatchToProps = dispatch => ({
   login: (email, password) => dispatch(login(email, password)),
   goToSignup: () => dispatch(push(routes.signup)),
-
-
 });
 
 
