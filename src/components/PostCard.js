@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import createMuiTheme from '../style/theme';
 import { connect } from "react-redux";
 import { getPosts } from '../action/index'
 import { getPostsDetailAction } from '../action/index'
@@ -110,20 +110,28 @@ class PostCardNew extends Component {
                                 <BottomBar>
                                     <VotesArea>
                                         <ButtonVote>
-                                            <ArrowUpwardIcon color={post.userVoteDirection !== 1 ? "main" : "primary"} onClick={() => this.handleVotePost(post, 1)} />
+                                            <ArrowUpwardIcon
+                                                color={post.userVoteDirection !== 1 ? "" : "primary"}
+                                                onClick={() => this.handleVotePost(post, 1)}
+                                            />
                                         </ButtonVote>
                                         <VotesCount> {post.votesCount} </VotesCount>
                                         <ButtonVote>
-                                            <ArrowDownwardIcon color={post.userVoteDirection !== -1 ? "main" : "secondary"} onClick={() => this.handleVotePost(post, -1)} />
+                                            <ArrowDownwardIcon
+                                                color={post.userVoteDirection !== -1 ? "" : "secondary"}
+                                                onClick={() => this.handleVotePost(post, -1)}
+                                            />
                                         </ButtonVote>
                                     </VotesArea>
                                     <Comments>
-                                        <Button size="small"
-                                            value={post.id} name="id"
+                                        <Button
+                                            size="small"
+                                            value={post.id}
+                                            name="id"
                                             onClick={() => this.handlePostDetail(post.id)}
                                         >
                                             {post.commentsNumber} comentários
-                                    </Button>
+                                        </Button>
                                     </Comments>
                                 </BottomBar>
                             </CardActions>

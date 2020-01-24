@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { createPost } from "../action/index"
+import { createPost } from "../action/index";
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
+
 
 
 const NewPostArea = styled.form`
@@ -13,7 +17,7 @@ const NewPostArea = styled.form`
 
 const WriteNewPost = styled.textarea``
 
-const Button = styled.button``
+
 
 class CreateNewPost extends Component {
     constructor(props) {
@@ -34,19 +38,44 @@ class CreateNewPost extends Component {
         event.preventDefault();
         const { text, title } = this.state
         this.props.createPost(text, title)
-        this.setState({text: "", title: ""})
+        this.setState({ text: "", title: "" })
 
     }
     render() {
         return (
             <NewPostArea onSubmit={this.handleSubmit}>
-                <label htmlFor="User">Titulo</label>
+                <TextField
+                    required
+                    id="filled-required"
+                    label="Título"
+                    variant="filled"
+                    type="text"
+                    name="title"
+                    value={this.state.title}
+                    onChange={this.handleChange}
+                />
+                <TextField
+                    required
+                    id="filled-multiline-static"
+                    label="Texto"
+                    multiline
+                    rows="4"
+                    variant="filled"
+                    type="text"
+                    name="text"
+                    value={this.state.text}
+                    onChange={this.handleChange}
+                />
+                {/* <label htmlFor="User">Titulo</label>
                 <WriteNewPost type="text" name="title" value={this.state.title} onChange={this.handleChange} id="User" >
                 </WriteNewPost>
                 <label htmlFor="User">Texto</label>
                 <WriteNewPost type="text" name="text" value={this.state.text} onChange={this.handleChange} id="User" >
-                </WriteNewPost>
-                <Button type="submit" >Postar</Button>
+                </WriteNewPost> */}
+                <Button  type="submit" variant="outlined" size="small" color="third">
+                Postar
+                </Button >
+                {/* <Button type="submit" >Postar</Button> */}
             </NewPostArea>
         );
     }

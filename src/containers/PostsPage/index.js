@@ -4,6 +4,10 @@ import CreateNewComment from "../../components/CreateNewComment";
 import CommentCard from "../../components/CommentCard"
 import PostCardDetail from "../../components/PostCardDetail";
 
+// TODO:
+// Caso o usuário não esteja logado,
+// deverá ser redirecionado para a página de login.
+
 const Root = styled.div`
   width: 100%;
   display: flex;
@@ -24,9 +28,9 @@ class PostsPage extends Component {
         return (
             <Root>
                 <MainContainer>
-                    <CommentCard />
-                    <CreateNewComment />
                     <PostCardDetail />
+                    <CreateNewComment />
+                    <CommentCard />
                 </MainContainer>
             </Root>
         );
