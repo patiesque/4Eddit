@@ -1,15 +1,9 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import CommentCard from "./CommentCard";
 import { connect } from "react-redux";
 import { createComment } from "../action/index";
-import { routes } from "../containers/Router";
-import { push } from "connected-react-router";
-
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-
-
 
 const NewCommentArea = styled.form`
     width: 100%;
@@ -17,12 +11,6 @@ const NewCommentArea = styled.form`
     flex-direction: column;
     margin-bottom: 10px;
 `
-
-const WriteNewComment = styled.textarea`
-    
-`
-
-// const Button = styled.button``
 
 class CreateNewComment extends Component {
     constructor(props) {
@@ -74,7 +62,6 @@ class CreateNewComment extends Component {
         );
     }
 }
-
 
 const mapStateToProps = state => ({
     selectIdPost: state.posts.selectIdPost,

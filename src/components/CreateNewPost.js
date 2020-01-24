@@ -7,8 +7,10 @@ import Button from '@material-ui/core/Button';
 
 const NewPostArea = styled.form`
     width: 100%;
+    height: 33vh;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     margin-bottom: 10px;
 `
 
@@ -32,9 +34,8 @@ class CreateNewPost extends Component {
         const { text, title } = this.state
         this.props.createPost(text, title)
         this.setState({ text: "", title: "" })
-
     }
-    
+
     render() {
         return (
             <NewPostArea onSubmit={this.handleSubmit}>
@@ -42,7 +43,7 @@ class CreateNewPost extends Component {
                     required
                     id="filled-required"
                     label="Título"
-                    variant="filled"
+                    variant="outlined"
                     type="text"
                     name="title"
                     value={this.state.title}
@@ -54,7 +55,7 @@ class CreateNewPost extends Component {
                     label="Texto"
                     multiline
                     rows="4"
-                    variant="filled"
+                    variant="outlined"
                     type="text"
                     name="text"
                     value={this.state.text}
@@ -62,9 +63,9 @@ class CreateNewPost extends Component {
                 />
                 <Button
                     type="submit"
-                    variant="outlined"
+                    variant="contained"
                     size="small"
-                    color="third"
+                    color="primary"
                 >
                     Postar
                 </Button >
@@ -75,8 +76,6 @@ class CreateNewPost extends Component {
 
 const mapDispatchToProps = dispatch => ({
     createPost: (text, title) => dispatch(createPost(text, title)),
-
 });
-
 
 export default connect(null, mapDispatchToProps)(CreateNewPost);

@@ -8,9 +8,10 @@ import TextField from '@material-ui/core/TextField';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import { CssBaseline } from "@material-ui/core";
 import { routes } from "../Router";
 import { push } from "connected-react-router";
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import Fab from '@material-ui/core/Fab';
 
 const Root = styled.div`
   width: 100%;
@@ -21,16 +22,20 @@ const Root = styled.div`
   align-items: center;
 `
 
-const Header = styled.header`
+const Logo = styled.div`
   width: 100%;
+  height: 15vw;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `
 
-const Logo = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+const Footer = styled.footer`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 2vh 0;
 `
 
 class SignupPage extends Component {
@@ -58,22 +63,9 @@ class SignupPage extends Component {
   render() {
     return (
       <Root>
-
         <Container component="main" maxWidth="xs" >
-          <CssBaseline />
+
           <div>
-            <Header>
-              <Button
-                type="submit"
-                variant="outlined"
-                size="small"
-                color="third"
-                text-align="left"
-                onClick={this.props.goToLogin}
-              >
-                Voltar
-                    </Button >
-            </Header>
             <Logo>
               <Avatar >
                 <LockOutlinedIcon />
@@ -82,6 +74,7 @@ class SignupPage extends Component {
                 Criar Nova Conta
             </Typography>
             </Logo>
+
             <form onSubmit={this.handleSubmit}>
               <TextField
                 variant="outlined"
@@ -105,7 +98,6 @@ class SignupPage extends Component {
                 id="email"
                 label="E-mail"
                 autoComplete="email"
-                autoFocus
                 component="h1"
                 type="email"
                 name="email"
@@ -133,6 +125,12 @@ class SignupPage extends Component {
                 Cadastrar
             </Button>
             </form>
+
+            <Footer>
+              <Fab color="primary" aria-label="add">
+                <ArrowBackIcon onClick={this.props.goToLogin} />
+              </Fab>
+            </Footer>
           </div>
         </Container>
       </Root>

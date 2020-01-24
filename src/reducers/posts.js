@@ -12,7 +12,6 @@ const posts = (state = initialState, action) => {
             return {...state, selectIdPost: action.payload.id}
         case "SET_COMMENTS":
             return {...state, selectPost: action.payload.post}
-
         default:
             return state
     }

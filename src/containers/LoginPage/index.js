@@ -29,6 +29,10 @@ const Logo = styled.div`
   align-items: center;
 `
 
+const Form = styled.form`
+  margin: 2vh 0;
+`
+
 class LoginPage extends Component {
   constructor(props) {
     super(props);
@@ -65,7 +69,8 @@ class LoginPage extends Component {
                 Fazer Login
             </Typography>
             </Logo>
-            <form onSubmit={this.handleSubmit}>
+
+            <Form onSubmit={this.handleSubmit}>
               <TextField
                 variant="outlined"
                 margin="normal"
@@ -101,16 +106,17 @@ class LoginPage extends Component {
               >
                 Login
             </Button>
-              <Grid container>
-                <Grid item xs>
-                </Grid>
-                <Grid item>
-                  <Link href="#" variant="body2" onClick={this.props.goToSignup}>
-                    {"Não tem uma conta? Cadastre-se aqui"}
-                  </Link>
-                </Grid>
+            </Form>
+
+            <Grid container>
+              <Grid item xs>
               </Grid>
-            </form>
+              <Grid item>
+                <Link href="#" variant="body2" onClick={this.props.goToSignup}>
+                  {"Não tem uma conta? Cadastre-se aqui"}
+                </Link>
+              </Grid>
+            </Grid>
           </div>
         </Container>
       </Root >
@@ -122,6 +128,5 @@ const mapDispatchToProps = dispatch => ({
   login: (email, password) => dispatch(login(email, password)),
   goToSignup: () => dispatch(push(routes.signup)),
 });
-
 
 export default connect(null, mapDispatchToProps)(LoginPage);

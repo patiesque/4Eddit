@@ -5,17 +5,9 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import createMuiTheme from '../style/theme';
-import { getPostsDetail } from '../action/index'
 import { connect } from "react-redux";
-import { getPosts } from '../action/index'
-import { getPostsDetailAction } from '../action/index'
-import { routes } from '../containers/Router'
-import { push } from "connected-react-router";
-import { vote } from '../action/index';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-import { voteComment } from '../action/index'
 
 const Root = styled.div`
   width: 100%;
@@ -43,9 +35,6 @@ const VotesArea = styled.div`
     display: flex;
     padding: 3px;
     align-items: center;   
-`
-
-const ButtonVote = styled.span`
 `
 
 const VotesCount = styled.span`
@@ -82,19 +71,19 @@ class PostCardDetail extends Component {
                         <CardActions>
                             <BottomBar>
                                 <VotesArea>
-                                    <ButtonVote>
+                                    <span>
                                         <ArrowUpwardIcon
                                             color={userVoteDirection !== 1 ? "" : "primary"}
                                             
                                         />
-                                    </ButtonVote>
+                                    </span>
                                     <VotesCount> {votesCount} </VotesCount>
-                                    <ButtonVote>
+                                    <span>
                                         <ArrowDownwardIcon
                                             color={userVoteDirection !== -1 ? "" : "secondary"}
                                         
                                         />
-                                    </ButtonVote>
+                                    </span>
                                 </VotesArea>
                                 <Comments>
                                     <Button
@@ -118,10 +107,5 @@ class PostCardDetail extends Component {
 const mapStateToProps = state => ({
     selectPost: state.posts.selectPost
 })
-
-const mapDispatchToProps = dispatch => ({
-    getPostsDetail: (id) => dispatch(getPostsDetail(id)),
-    voteComment: (id, commentId, direction) => dispatch(voteComment(id, commentId, direction))
-});
 
 export default connect(mapStateToProps)(PostCardDetail);
