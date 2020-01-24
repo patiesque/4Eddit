@@ -5,19 +5,12 @@ import { createPost } from "../action/index";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-
-
-
 const NewPostArea = styled.form`
     width: 100%;
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
 `
-
-const WriteNewPost = styled.textarea``
-
-
 
 class CreateNewPost extends Component {
     constructor(props) {
@@ -41,6 +34,7 @@ class CreateNewPost extends Component {
         this.setState({ text: "", title: "" })
 
     }
+    
     render() {
         return (
             <NewPostArea onSubmit={this.handleSubmit}>
@@ -66,16 +60,14 @@ class CreateNewPost extends Component {
                     value={this.state.text}
                     onChange={this.handleChange}
                 />
-                {/* <label htmlFor="User">Titulo</label>
-                <WriteNewPost type="text" name="title" value={this.state.title} onChange={this.handleChange} id="User" >
-                </WriteNewPost>
-                <label htmlFor="User">Texto</label>
-                <WriteNewPost type="text" name="text" value={this.state.text} onChange={this.handleChange} id="User" >
-                </WriteNewPost> */}
-                <Button  type="submit" variant="outlined" size="small" color="third">
-                Postar
+                <Button
+                    type="submit"
+                    variant="outlined"
+                    size="small"
+                    color="third"
+                >
+                    Postar
                 </Button >
-                {/* <Button type="submit" >Postar</Button> */}
             </NewPostArea>
         );
     }

@@ -4,16 +4,13 @@ import { Switch, Route } from "react-router-dom";
 import LoginPage from "../LoginPage";
 import SignupPage from "../SignupPage";
 import FeedPage from "../FeedPage";
-import PostsPage from "../PostsPage";
+import PostPage from "../PostPage";
 
 export const routes = {
   root: "/",
   signup: "/signup",
   feed: "/feed",
-  posts: "/posts",
-
-  // Outras rotas aqui
-
+  post: "/post",
 };
 
 function Router(props) {
@@ -23,7 +20,7 @@ function Router(props) {
         <Route path={routes.root} component={LoginPage} exact />
         <Route path={routes.signup} component={SignupPage} exact />
         <Route path={routes.feed} component={FeedPage} exact />
-        <Route path={routes.posts} component={PostsPage} exact /> 
+        <Route path={routes.post} component={PostPage} exact /> 
       </Switch>
     </ConnectedRouter>
   );

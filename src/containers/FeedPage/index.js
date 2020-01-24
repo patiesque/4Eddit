@@ -13,7 +13,7 @@ const Root = styled.div`
 const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 30vw;
+  width: 50vw;
   justify-content: center;
   align-items: center;
 `
