@@ -22,13 +22,19 @@ const Root = styled.div`
   align-items: center;
 `
 
-const Logo = styled.div`
+const Banner = styled.div`
   width: 100%;
-  height: 15vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 15px;
+`
+
+const Image = styled.img`
+  width: 50%;
+  border-radius: 50%;
+  margin-bottom: 15px;
 `
 
 const Footer = styled.footer`
@@ -64,16 +70,13 @@ class SignupPage extends Component {
     return (
       <Root>
         <Container component="main" maxWidth="xs" >
-
           <div>
-            <Logo>
-              <Avatar >
-                <LockOutlinedIcon />
-              </Avatar>
+            <Banner>
+              <Image src={require('../../logo.png')} />
               <Typography>
                 Criar Nova Conta
-            </Typography>
-            </Logo>
+              </Typography>
+            </Banner>
 
             <form onSubmit={this.handleSubmit}>
               <TextField

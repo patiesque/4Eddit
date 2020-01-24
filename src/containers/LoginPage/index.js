@@ -22,11 +22,18 @@ const Root = styled.div`
   align-items: center;
 `
 
-const Logo = styled.div`
+const Banner = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`
+
+const Image = styled.img`
+  width: 50%;
+  border-radius: 50%;
+  margin-bottom: 15px;
 `
 
 const Form = styled.form`
@@ -61,14 +68,12 @@ class LoginPage extends Component {
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           <div>
-            <Logo>
-              <Avatar >
-                <LockOutlinedIcon />
-              </Avatar>
+            <Banner>
+              <Image src={require('../../logo.png')} />
               <Typography>
                 Fazer Login
-            </Typography>
-            </Logo>
+              </Typography>
+            </Banner>
 
             <Form onSubmit={this.handleSubmit}>
               <TextField
