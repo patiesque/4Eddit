@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import PostCard from "../../components/PostCard";
 import CreateNewPost from "../../components/CreateNewPost";
+import { connect } from "react-redux";
+import { push } from "connected-react-router";
+import { routes } from "../Router";
 
 const Root = styled.div`
   width: 100%;
@@ -19,16 +22,29 @@ const MainContainer = styled.div`
 `
 
 class FeedPage extends Component {
-    render() {
-        return (
-            <Root>
-                <MainContainer>
-                    <CreateNewPost />
-                    <PostCard />
-                </MainContainer>
-            </Root>
-        );
-    }
-}
 
-export default FeedPage;
+    componentDidMount() {
+        const token = window.localStorage.getItem("token")
+        if (token === null) {
+            this.props.goToLogin()
+            window.alert("Área restrita. Faça seu login")
+        }
+    }
+
+        render() {
+            return (
+                <Root>
+                    <MainContainer>
+                        <CreateNewPost />
+                        <PostCard />
+                    </MainContainer>
+                </Root>
+            );
+        }
+    }
+
+const mapDispatchToProps = dispatch => ({
+    goToLogin: () => dispatch(push(routes.root)),
+});
+      
+export default connect(null, mapDispatchToProps)(FeedPage);
