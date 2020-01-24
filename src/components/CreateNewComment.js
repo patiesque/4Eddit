@@ -6,6 +6,9 @@ import { createComment } from "../action/index";
 import { routes } from "../containers/Router";
 import { push } from "connected-react-router";
 
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
 
 
 const NewCommentArea = styled.form`
@@ -13,14 +16,13 @@ const NewCommentArea = styled.form`
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
-    border: solid black 1px;
 `
 
 const WriteNewComment = styled.textarea`
     
 `
 
-const Button = styled.button``
+// const Button = styled.button``
 
 class CreateNewComment extends Component {
     constructor(props) {
@@ -40,20 +42,38 @@ class CreateNewComment extends Component {
         event.preventDefault();
         const { text } = this.state
         this.props.createComment(text, this.props.selectIdPost)
-        this.setState({text:""})
+        this.setState({ text: "" })
     }
 
-        render() {
-            return (
-                <NewCommentArea onSubmit={this.handleSubmit}>
-                    <WriteNewComment type="text" name="text" value={this.state.text} onChange={this.handleChange} placeholder="Escreva seu comentário">
-                    </WriteNewComment>
-                    <Button type="submit" >Comentar</Button>
-                </NewCommentArea>
+    render() {
+        return (
 
-            );
-        }
+            <NewCommentArea onSubmit={this.handleSubmit}>
+                <TextField
+                    required
+                    id="filled-multiline-static"
+                    label="Escreva seu comentário"
+                    multiline
+                    rows="4"
+                    variant="filled"
+                    type="text"
+                    name="text"
+                    value={this.state.text}
+                    onChange={this.handleChange}
+                />
+                <Button
+                    type="submit"
+                    variant="outlined"
+                    size="small"
+                    color="main"
+                >
+                    Comentar
+                </Button >
+            </NewCommentArea>
+
+        );
     }
+}
 
 
 const mapStateToProps = state => ({
