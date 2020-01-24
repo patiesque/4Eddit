@@ -5,7 +5,6 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import createMuiTheme from '../style/theme';
 import { connect } from "react-redux";
 import { getPosts } from '../action/index'
 import { getPostsDetailAction } from '../action/index'
@@ -24,7 +23,7 @@ const Root = styled.div`
   align-items: flex-start;
 `
 
-const PostCard = styled.section`
+const MainContainer = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -60,8 +59,7 @@ const Comments = styled.div`
     padding: 5px;
 `
 
-
-class PostCardNew extends Component {
+class PostCard extends Component {
     componentDidMount() {
         this.props.getPosts()
     }
@@ -69,30 +67,25 @@ class PostCardNew extends Component {
     handlePostDetail = (id) => {
         this.props.getPostsDetail(id)
         this.props.goToPostDetail()
-
     }
 
     handleVotePost = (post, direction) => {
         if (post.userVoteDirection === 0) {
-            // Se a pessoa nunca interagiu com o post
             this.props.votePost(post.id, direction)
         } else if (post.userVoteDirection === 1 && direction === 1) {
-            // Se a pessoa curtiu, mas já estava curtido
             this.props.votePost(post.id, 0)
         } else if (post.userVoteDirection === -1 && direction === -1) {
-            // Se a pessoa descurtiu, mas já estava descurtido
             this.props.votePost(post.id, 0)
         }
-
     }
 
     render() {
-
         return (
             <Root>
 
                 {this.props.allPosts.map((post) =>
-                    <PostCard>
+
+                    <MainContainer>
                         <Card width="100%" >
                             <CardContent>
                                 <Typography color="textSecondary" gutterBottom>
@@ -123,6 +116,7 @@ class PostCardNew extends Component {
                                             />
                                         </ButtonVote>
                                     </VotesArea>
+
                                     <Comments>
                                         <Button
                                             size="small"
@@ -136,11 +130,9 @@ class PostCardNew extends Component {
                                 </BottomBar>
                             </CardActions>
                         </Card>
-                    </PostCard>
+                    </MainContainer>
                 )}
-
             </Root>
-
         );
     }
 }
@@ -157,5 +149,4 @@ const mapDispatchToProps = dispatch => ({
     votePost: (id, direction) => dispatch(vote(id, direction))
 });
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(PostCardNew);
+export default connect(mapStateToProps, mapDispatchToProps)(PostCard);

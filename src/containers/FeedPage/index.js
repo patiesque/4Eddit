@@ -31,20 +31,20 @@ class FeedPage extends Component {
         }
     }
 
-        render() {
-            return (
-                <Root>
-                    <MainContainer>
-                        <CreateNewPost />
-                        <PostCard />
-                    </MainContainer>
-                </Root>
-            );
-        }
+    render() {
+        return (
+            <Root>
+                <MainContainer>
+                    <CreateNewPost />
+                    <PostCard />
+                </MainContainer>
+            </Root>
+        );
     }
+}
 
 const mapDispatchToProps = dispatch => ({
     goToLogin: () => dispatch(push(routes.root)),
 });
-      
+
 export default connect(null, mapDispatchToProps)(FeedPage);
