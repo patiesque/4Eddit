@@ -75,7 +75,7 @@ class LoginPage extends Component {
                 <LockOutlinedIcon />
               </Avatar>
               <Typography>
-                Sign in
+                Fazer Login
             </Typography>
             </Logo>
             <form onSubmit={this.handleSubmit}>
@@ -85,7 +85,7 @@ class LoginPage extends Component {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label="E-mail"
                 autoComplete="email"
                 autoFocus
                 component="h1"
@@ -102,7 +102,7 @@ class LoginPage extends Component {
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label="Senha"
                 type="password"
                 autoComplete="current-password"
                 value={this.state.password}
@@ -121,7 +121,7 @@ class LoginPage extends Component {
                 </Grid>
                 <Grid item>
                   <Link href="#" variant="body2" onClick={this.props.goToSignup}>
-                    {"Don't have an account? Sign Up"}
+                    {"Não tem uma conta? Cadastre-se aqui"}
                   </Link>
                 </Grid>
               </Grid>
