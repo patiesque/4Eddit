@@ -153,7 +153,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     getPosts: () => dispatch(getPosts()),
     getPostsDetail: (id) => dispatch(getPostsDetailAction(id)),
-    goToPostDetail: () => dispatch(push(routes.posts)),
+    goToPostDetail: () => dispatch(push(routes.post)),
     votePost: (id, direction) => dispatch(vote(id, direction))
 });
 
