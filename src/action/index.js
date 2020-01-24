@@ -1,9 +1,6 @@
 import axios from 'axios'
-import { push } from "connected-react-router";
-import { routes } from "../containers/Router";
 
 const baseURL = "https://us-central1-missao-newton.cloudfunctions.net/fourEddit/"
-
 
 const getPostsAction = (posts) => {
   return {
@@ -38,15 +35,14 @@ export const getPosts = () => async (dispatch) => {
   const response = await axios.get(`${baseURL}posts`, headers)
 
   dispatch(getPostsAction(response.data.posts))
-
 }
 
 //Get Post Detail
 export const getPostsDetail = (id) => async (dispatch) => {
   const headers = { headers: { auth: window.localStorage.getItem("token") } }
   const response = await axios.get(`${baseURL}posts/${id}`, headers)
-  dispatch(setCommentsAction(response.data.post))
 
+  dispatch(setCommentsAction(response.data.post))
 }
 
 //Create Posts
@@ -80,7 +76,6 @@ export const createComment = (text, id) => async (dispatch) => {
   } catch{
     window.alert("Erro criação")
   }
-
 }
 
 //Vote
@@ -92,12 +87,7 @@ export const vote = (id, direction) => async (dispatch) => {
 
   await axios.put(`${baseURL}posts/${id}/vote`, voteInformation, headers)
   dispatch(getPosts())
-
 }
-
-
-
-
 
 //Vote Comment
 export const voteComment = (id, commentId, direction) => async (dispatch) => {
@@ -108,5 +98,4 @@ export const voteComment = (id, commentId, direction) => async (dispatch) => {
 
   await axios.put(`${baseURL}posts/${id}/comment/${commentId}/vote`, voteCommentInformation, headers)
   dispatch(getPostsDetail(id))
-
 }

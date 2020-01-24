@@ -8,11 +8,6 @@ import { push } from "connected-react-router";
 import { routes } from "../Router";
 import { connect } from "react-redux";
 
-
-// TODO:
-// Caso o usuário não esteja logado,
-// deverá ser redirecionado para a página de login.
-
 const Root = styled.div`
   width: 100%;
   display: flex;
@@ -37,6 +32,15 @@ const MainContainer = styled.div`
 `
 
 class PostPage extends Component {
+
+    componentDidMount() {
+        const token = window.localStorage.getItem("token")
+        if (token === null) {
+            this.props.goToLogin()
+            window.alert("Área restrita. Faça seu login")
+        }
+    }
+
     render() {
         return (
             <Root>
@@ -62,9 +66,9 @@ class PostPage extends Component {
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        goToFeed: () => dispatch(push(routes.feed)),
-    };
-}
+const mapDispatchToProps = dispatch => ({
+    goToLogin: () => dispatch(push(routes.root)),
+    goToFeed: () => dispatch(push(routes.feed)),
+});
+  
 export default connect(null, mapDispatchToProps)(PostPage);

@@ -4,7 +4,6 @@ import { routes } from "../containers/Router/index";
 
 const baseURL = "https://us-central1-missao-newton.cloudfunctions.net/fourEddit/"
 
-
 export const login = (email, password) => async (dispatch) => {
     const loginInformation = {
       email,
@@ -21,7 +20,6 @@ export const login = (email, password) => async (dispatch) => {
     dispatch(push(routes.login))
 
   }
-
 }
 
 export const signup = (username, email, password) => async (dispatch) => {
@@ -41,6 +39,4 @@ export const signup = (username, email, password) => async (dispatch) => {
     dispatch(push(routes.signup))
 
   }
-
-
 }
