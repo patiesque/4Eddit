@@ -6,11 +6,11 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { connect } from "react-redux";
-import { getPosts } from '../action/index'
-import { getPostsDetailAction } from '../action/index'
-import { routes } from '../containers/Router'
+import { getPosts } from '../../action/index'
+import { getPostsDetailAction } from '../../action/index'
+import { routes } from '../Router'
 import { push } from "connected-react-router";
-import { vote } from '../action/index';
+import { vote } from '../../action/index';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 

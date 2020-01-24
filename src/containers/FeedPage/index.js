@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import PostCard from "../../components/PostCard";
-import CreateNewPost from "../../components/CreateNewPost";
+import PostCard from "./PostCard";
+import CreateNewPost from "./CreateNewPost";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router";

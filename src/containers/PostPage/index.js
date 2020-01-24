@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import CreateNewComment from "../../components/CreateNewComment";
-import CommentCard from "../../components/CommentCard"
-import PostCardDetail from "../../components/PostCardDetail";
+import CreateNewComment from "./CreateNewComment";
+import CommentCard from "./CommentCard"
+import PostCardDetail from "./PostCardDetail";
 import { push } from "connected-react-router";
 import { routes } from "../Router";
 import { connect } from "react-redux";
