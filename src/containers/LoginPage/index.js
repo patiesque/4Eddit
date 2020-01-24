@@ -29,7 +29,7 @@ const Logo = styled.div`
   align-items: center;
 `
 
-const Form = styled.div`
+const Form = styled.form`
   margin: 2vh 0;
 `
 
