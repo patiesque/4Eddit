@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { createPost } from "../action/index";
+import { createPost } from "../../action/index";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
