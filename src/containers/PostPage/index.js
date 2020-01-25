@@ -8,6 +8,7 @@ import { routes } from "../Router";
 import { connect } from "react-redux";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Fab from '@material-ui/core/Fab';
+import Container from '@material-ui/core/Container';
 
 const Root = styled.div`
   width: 100%;
@@ -18,15 +19,13 @@ const Root = styled.div`
   margin: 15px 0;
 `
 
-const MainContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 50vw;
-  justify-content: center;
-  align-items: center;
-`
-
 const Footer = styled.footer`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 2vh 0;
+`
+const Banana = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -46,11 +45,11 @@ class PostPage extends Component {
     render() {
         return (
             <Root>
-                <MainContainer>
+                <Container component="main" maxWidth="xs">
                     <PostCardDetail />
                     <CreateNewComment />
                     <CommentCard />
-                </MainContainer>
+                </Container>
                 <Footer>
                     <Fab color="primary" aria-label="add">
                         <ArrowBackIcon onClick={this.props.goToFeed} />

@@ -5,20 +5,13 @@ import CreateNewPost from "./CreateNewPost";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router";
+import Container from '@material-ui/core/Container';
 
 const Root = styled.div`
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: center;
   margin: 15px 0;
-`
-
-const MainContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 50vw;
-  justify-content: center;
-  align-items: center;
 `
 
 class FeedPage extends Component {
@@ -34,10 +27,10 @@ class FeedPage extends Component {
     render() {
         return (
             <Root>
-                <MainContainer>
+                <Container component="main" maxWidth="xs">
                     <CreateNewPost />
                     <PostCard />
-                </MainContainer>
+                </Container>
             </Root>
         );
     }
