@@ -4,12 +4,10 @@ import { connect } from "react-redux";
 import { login } from "../../action/login"
 import { routes } from "../Router";
 import { push } from "connected-react-router";
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { CssBaseline } from "@material-ui/core";
