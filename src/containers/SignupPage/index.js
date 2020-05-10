@@ -2,11 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { signup } from "../../action/login";
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { routes } from "../Router";
 import { push } from "connected-react-router";
@@ -35,6 +32,10 @@ const Image = styled.img`
   width: 50%;
   border-radius: 50%;
   margin-bottom: 15px;
+`
+
+const Form = styled.form`
+  margin: 2vh 0;
 `
 
 const Footer = styled.footer`
@@ -70,27 +71,20 @@ class SignupPage extends Component {
     return (
       <Root>
         <Container component="main" maxWidth="xs" >
-          <div>
             <Banner>
               <Image src={require('../../logo.png')} />
-              <Typography>
-                Criar Nova Conta
-              </Typography>
             </Banner>
 
-            <form onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.handleSubmit}>
               <TextField
                 variant="outlined"
                 margin="normal"
                 required
                 fullWidth
                 label="Nome de Usuário"
-                autoComplete="username"
-                autoFocus
                 component="h1"
                 type="text"
                 name="username"
-                value={this.state.username}
                 onChange={this.handleChange}
               />
               <TextField
@@ -98,13 +92,10 @@ class SignupPage extends Component {
                 margin="normal"
                 required
                 fullWidth
-                id="email"
                 label="E-mail"
-                autoComplete="email"
                 component="h1"
                 type="email"
                 name="email"
-                value={this.state.email}
                 onChange={this.handleChange}
               />
               <TextField
@@ -112,11 +103,9 @@ class SignupPage extends Component {
                 margin="normal"
                 required
                 fullWidth
-                name="password"
                 label="Senha"
                 type="password"
-                autoComplete="current-password"
-                value={this.state.password}
+                name="password"
                 onChange={this.handleChange}
               />
               <Button
@@ -127,20 +116,19 @@ class SignupPage extends Component {
               >
                 Cadastrar
             </Button>
-            </form>
+            </Form>
 
             <Footer>
               <Fab color="primary" aria-label="add">
                 <ArrowBackIcon onClick={this.props.goToLogin} />
               </Fab>
             </Footer>
-          </div>
         </Container>
       </Root>
     );
   }
 }
-
+ 
 const mapDispatchToProps = dispatch => ({
   signup: (username, email, password) => dispatch(signup(username, email, password)),
   goToLogin: () => dispatch(push(routes.root)),

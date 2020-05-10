@@ -8,7 +8,6 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { CssBaseline } from "@material-ui/core";
 
@@ -68,11 +67,8 @@ class LoginPage extends Component {
           <div>
             <Banner>
               <Image src={require('../../logo.png')} />
-              <Typography>
-                Fazer Login
-              </Typography>
             </Banner>
-
+ 
             <Form onSubmit={this.handleSubmit}>
               <TextField
                 variant="outlined"
@@ -86,7 +82,6 @@ class LoginPage extends Component {
                 component="h1"
                 type="email"
                 name="email"
-                value={this.state.email}
                 onChange={this.handleChange}
               />
               <TextField
@@ -98,7 +93,6 @@ class LoginPage extends Component {
                 label="Senha"
                 type="password"
                 autoComplete="current-password"
-                value={this.state.password}
                 onChange={this.handleChange}
               />
               <Button
