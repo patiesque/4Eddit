@@ -29,7 +29,6 @@ export const setCommentsAction = (post) => {
   };
 };
 
-//Get Posts
 export const getPosts = () => async (dispatch) => {
   const headers = { headers: { auth: window.localStorage.getItem("token") } }
   const response = await axios.get(`${baseURL}posts`, headers)
@@ -37,7 +36,6 @@ export const getPosts = () => async (dispatch) => {
   dispatch(getPostsAction(response.data.posts))
 }
 
-//Get Post Detail
 export const getPostsDetail = (id) => async (dispatch) => {
   const headers = { headers: { auth: window.localStorage.getItem("token") } }
   const response = await axios.get(`${baseURL}posts/${id}`, headers)
@@ -45,7 +43,6 @@ export const getPostsDetail = (id) => async (dispatch) => {
   dispatch(setCommentsAction(response.data.post))
 }
 
-//Create Posts
 export const createPost = (text, title) => async (dispatch) => {
   const createPostInformation = {
     text,
@@ -62,7 +59,6 @@ export const createPost = (text, title) => async (dispatch) => {
   }
 }
 
-//Create Comment
 export const createComment = (text, id) => async (dispatch) => {
   const createCommentInformation = {
     text
@@ -70,15 +66,14 @@ export const createComment = (text, id) => async (dispatch) => {
   const headers = { headers: { auth: window.localStorage.getItem("token") } }
 
   try {
-  await axios.post(`${baseURL}posts/${id}/comment`, createCommentInformation, headers);
-  dispatch(getPostsDetail(id))
+    await axios.post(`${baseURL}posts/${id}/comment`, createCommentInformation, headers);
+    dispatch(getPostsDetail(id))
 
   } catch{
     window.alert("Erro criação")
   }
 }
 
-//Vote
 export const vote = (id, direction) => async (dispatch) => {
   const headers = { headers: { auth: window.localStorage.getItem("token") } }
   const voteInformation = {
@@ -89,7 +84,6 @@ export const vote = (id, direction) => async (dispatch) => {
   dispatch(getPosts())
 }
 
-//Vote Comment
 export const voteComment = (id, commentId, direction) => async (dispatch) => {
   const headers = { headers: { auth: window.localStorage.getItem("token") } }
   const voteCommentInformation = {

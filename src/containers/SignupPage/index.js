@@ -72,7 +72,7 @@ class SignupPage extends Component {
       <Root>
         <Container component="main" maxWidth="xs" >
             <Banner>
-              <Image src={require('../../logo.png')} />
+              <Image src={require('../../imagens/logo.png')} />
             </Banner>
 
             <Form onSubmit={this.handleSubmit}>

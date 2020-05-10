@@ -21,7 +21,7 @@ class CreateNewPost extends Component {
             text: "",
             title: ""
         }
-    }
+    } 
 
     handleChange = event => {
         this.setState({
@@ -36,6 +36,7 @@ class CreateNewPost extends Component {
         this.setState({ text: "", title: "" })
     }
 
+
     render() {
         return (
             <NewPostArea onSubmit={this.handleSubmit}>
@@ -46,7 +47,6 @@ class CreateNewPost extends Component {
                     variant="outlined"
                     type="text"
                     name="title"
-                    value={this.state.title}
                     onChange={this.handleChange}
                 />
                 <TextField
@@ -58,7 +58,6 @@ class CreateNewPost extends Component {
                     variant="outlined"
                     type="text"
                     name="text"
-                    value={this.state.text}
                     onChange={this.handleChange}
                 />
                 <Button

@@ -25,12 +25,6 @@ const Footer = styled.footer`
   justify-content: center;
   margin: 2vh 0;
 `
-// const Banana = styled.div`
-//   width: 100%;
-//   display: flex;
-//   justify-content: center;
-//   margin: 2vh 0;
-// `
 
 class PostPage extends Component {
 

@@ -82,23 +82,26 @@ class PostCard extends Component {
     render() {
         return (
             <Root>
-
                 {this.props.allPosts.map((post) =>
-
                     <MainContainer>
                         <Card width="100%" >
                             <CardContent>
-                                <Typography color="textSecondary" gutterBottom>
+                                <Typography
+                                    color="textSecondary"
+                                    gutterBottom>
                                     {post.username}
                                 </Typography>
-                                <Typography variant="h5" component="h2">
+                                <Typography
+                                    variant="h5"
+                                    component="h2">
                                     {post.title}
                                 </Typography>
-                                <Typography variant="body2" component="p">
+                                <Typography
+                                    variant="body2"
+                                    component="p">
                                     {post.text}
                                 </Typography>
                             </CardContent>
-
                             <CardActions>
                                 <BottomBar>
                                     <VotesArea>

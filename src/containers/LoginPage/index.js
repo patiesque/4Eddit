@@ -66,7 +66,7 @@ class LoginPage extends Component {
           <CssBaseline />
           <div>
             <Banner>
-              <Image src={require('../../logo.png')} />
+              <Image src={require('../../imagens/logo.png')} />
             </Banner>
  
             <Form onSubmit={this.handleSubmit}>
@@ -75,11 +75,9 @@ class LoginPage extends Component {
                 margin="normal"
                 required
                 fullWidth
-                id="email"
-                label="E-mail"
-                autoComplete="email"
                 autoFocus
                 component="h1"
+                label="E-mail"
                 type="email"
                 name="email"
                 onChange={this.handleChange}
@@ -89,10 +87,9 @@ class LoginPage extends Component {
                 margin="normal"
                 required
                 fullWidth
-                name="password"
                 label="Senha"
                 type="password"
-                autoComplete="current-password"
+                name="password"
                 onChange={this.handleChange}
               />
               <Button
